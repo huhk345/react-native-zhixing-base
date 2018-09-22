@@ -23,6 +23,20 @@ export function* fetchByAction(url, action, responseParser, timeout) {
 }
 
 
+export function* deleteByAction(url, action, responseParser, timeout) {
+    try {
+        Keyboard.dismiss()
+        const {response} = yield race({
+            response: call(RestApi.DELETE, url, action.payload, action.headers),
+            timeout: call(delay, timeout == undefined ? time : timeout)
+        });
+        yield handleResonse(response, responseParser, action, url);
+    } catch (e) {
+        yield handleError(e, action, url);
+    }
+}
+
+
 export function* postByAction(url, action, responseParser, timeout) {
     try {
         Keyboard.dismiss()
