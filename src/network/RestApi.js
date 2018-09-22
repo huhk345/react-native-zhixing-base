@@ -70,6 +70,7 @@ module.exports = {
         }
         console.log('request :' + url);
         return fetch(url, {
+            method: 'DELETE',
             headers: headers,
         })
             .then(NetworkUtils.checkStatus)
