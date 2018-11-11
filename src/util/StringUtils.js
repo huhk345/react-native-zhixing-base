@@ -42,7 +42,7 @@ module.exports = {
     },
 
     checkMobile(phoneNumber){
-        if (/^1[3|4|5|7|8][0-9]{9}$/.test(phoneNumber)) {
+        if (/^1[2|3|4|5|6|7|8|9][0-9]{9}$/.test(phoneNumber)) {
             return true;
         }
         return false;
